@@ -1,0 +1,31 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "CPU inference API for the Retina Scope research prototype"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn",
+    "python-multipart",
+    "torch",
+    "torchvision",
+    "opencv-python-headless",
+    "Pillow",
+    "numpy",
+]
+
+[dependency-groups]
+dev = ["pytest", "httpx"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }
+torchvision = { index = "pytorch-cpu", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

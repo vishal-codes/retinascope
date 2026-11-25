@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn
+python-multipart
+torch
+torchvision
+opencv-python-headless
+Pillow
+numpy
